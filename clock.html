@@ -18,7 +18,16 @@
       setInterval(() => {
         a = new Date();
         date = a.toLocaleDateString(undefined,options);
-        t = a.getHours() + ":" +a.getMinutes()+ ":"+a.getSeconds();
+        if(a.getHours()<10){
+          t = "0"+a.getHours() + ":" +a.getMinutes()+ ":"+a.getSeconds();
+        }else if(a.getMinutes()<10){
+          t = a.getHours() + ":" +"0"+a.getMinutes()+ ":"+a.getSeconds();
+        }else if(a.getSeconds()<10){
+          t = a.getHours() + ":" +a.getMinutes()+ ":"+"0"+ a.getSeconds();
+        }else{
+          t = a.getHours() + ":" +a.getMinutes()+ ":"+a.getSeconds();
+        }
+        
         document.getElementById('time').innerHTML = t+ " on " + date
       }, 1000);
       
